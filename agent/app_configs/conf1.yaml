@@ -1,0 +1,53 @@
+
+implementations:
+  - 'ivr'
+  - 'spec-pat'
+
+app_data:
+ id: 'cagm'
+ table: 'prod_oco_team_data_science.personalization_agent.personalization_state_rx'
+ datastore: 'azureml://datastores/personalizationgold/paths/personalization'
+
+train_compute: 'dedicated-gpu'
+num_nodes: 4
+num_devices_per_node: 1
+topn_actions: null
+chance_no_action: 0.1
+grad_accum_batches: null
+encoder_batch_size: 150
+encoder_resume: true
+state_max_len: 100
+state_dim: 32
+action_dim: 12
+
+action_space:
+ common:
+  0: 'none'
+  6: 'orderstatus'
+  7: 'outstandingbalance'
+  9: 'creditcard'
+ ivr:
+  1: 'autorefill'
+  2: 'sms'
+  3: 'renewal'
+  4: 'schedulerefill'
+  5: 'refill'
+  8: 'address'
+  10: 'clinicalopportunity'
+  11: 'diabeteshold'
+ spec-pat:
+  12: 'osp_commpref'
+  13: 'osp_ob_newtherapy_eosl'
+  14: 'osp_ob_arop_eosl'
+  15: 'osp_newtherapy_eosl'
+  16: 'osp_arop_eosl'
+  17: 'osp_ob_refillrenewal_secure'
+  18: 'osp_refillrenewal_secure'
+  19: 'osp_smf'
+  20: 'osp_paymenthold'
+  21: 'osp_amauthold'
+  22: 'osp_outreachhold'
+  23: 'osp_copaysavingscoverage'
+  24: 'osp_claimshistory'
+  25: 'osp_tstfrxstatus'
+  26: 'osp_officebaseddurationconsent'
